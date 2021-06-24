@@ -53,7 +53,7 @@ var myObject = new Vue({
   data: {pokemon: ''},
   created() {
   // Simple GET request using fetch
-  fetch("http://pokemon.test/read.php")
+  fetch("https://santaz.biz/pokemon/read.php")
     .then(response => response.json())
     .then(data => (this.pokemon = data));
     },  
