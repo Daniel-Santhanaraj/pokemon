@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<body>
+
+<div id="app" class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <td>#</td>
+                <td>Name</td>
+                <td>Type 1</td>
+                <td>Type 2</td>
+                <td>Total</td>
+                <td>HP</td>
+                <td>Attack</td>
+                <td>Defence</td>
+                <td>Sp.Attack</td>
+                <td>Sp.Defence</td>
+                <td>Speed</td>
+                <td>Generation</td>
+                <td>Legendary</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="item in pokemon" :key="item.id">
+                <td>{{item.id}}</td>
+                <td>{{item.name_}}</td>
+                <td>{{item.type1}}</td>
+                <td>{{item.type2}}</td>
+                <td>{{item.total}}</td>
+                <td>{{item.hp}}</td>
+                <td>{{item.attack}}</td>
+                <td>{{item.defense}}</td>
+                <td>{{item.sp_attack}}</td>
+                <td>{{item.sp_defense}}</td>
+                <td>{{item.speed}}</td>
+                <td>{{item.generation}}</td>
+                <td><button class="legendary">{{item.legendary}}</button></td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+var myObject = new Vue({
+  el: '#app',
+  data: {pokemon: ''},
+  created() {
+  // Simple GET request using fetch
+  fetch("http://pokemon.test/read.php")
+    .then(response => response.json())
+    .then(data => (this.pokemon = data));
+    },  
+})
+</script>
+
+</body>
+</html>
